@@ -10,17 +10,17 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('students', function (Blueprint $table) {
-            $table->id();
-            $table->string('reg_no');
-            $table->string('name');
-            $table->string('address');
-            $table->date('bod');
-            $table->integer('age');
-            $table->double('weight');
-            $table->timestamps();
-        });
+    {  Schema::create('students', function (Blueprint $table) {
+        $table->id();
+        $table->string('reg_no')->unique();
+        $table->string('name');
+        $table->string('email')->unique();
+        $table->string('address');
+        $table->date('bod');
+        $table->integer('age');
+        $table->integer('password');
+        $table->timestamps();
+    });
     }
 
     /**

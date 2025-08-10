@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class Admincontroller extends Controller
 {
-    public  function dashboard()
+    public  function home()
     {
-        return view('dashboard');
+        return view('home');
     }
     public  function about()
     {
