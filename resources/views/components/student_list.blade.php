@@ -10,13 +10,9 @@
     <div class="container mt-4">
         <div class="row ">
             <div class="col-12">
-                <h1 class="mb-3">Student List</h1>
+                <h1 class="mb-3"></h1>
             </div>
-            <div class="col-6">
-
-
-
-
+            <div class="col-7">
                 <table class="table">
                     <thead class="thead-light">
                     <tr>
@@ -26,6 +22,7 @@
                         <th scope="col">Age</th>
                         <th scope="col">Email</th>
                         <th scope="col">Address</th>
+                        <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -38,6 +35,10 @@
                             <td>{{$student->age}}</td>
                             <td>{{$student->email}}</td>
                             <td>{{$student->address}}</td>
+                            <td>
+                                <a href="{{route('student.stu_update',$student->id)}}" class="btn btn-warning btn-sm">Update</a>
+                                <a href="{{route('student.delete',$student->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
