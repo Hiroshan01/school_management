@@ -12,7 +12,7 @@
         <div class="card-header"><div class="card-title">Register Student</div></div>
         <!--end::Header-->
         <!--begin::Form-->
-        <form action="{{route('student.store')}}" method="POST">
+        <form action="{{route('student.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <!--begin::Body-->
             <div class="card-body">
@@ -66,6 +66,10 @@
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input type="password" name="password" class="form-control" id="exampleInputPassword1" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Image</label>
+                        <input type="file" name="img" class="form-control" id="exampleInputPassword1" />
                     </div>
                 </div>
             </div>

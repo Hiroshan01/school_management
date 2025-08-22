@@ -12,7 +12,7 @@
         <div class="card-header"><div class="card-title">Register Student</div></div>
         <!--end::Header-->
         <!--begin::Form-->
-        <form action="{{route('student.update')}}" method="POST">
+        <form action="{{route('student.update')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <!--begin::Body-->
             <input type="hidden" name="id" value="{{$student->id}}">
@@ -70,6 +70,14 @@
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input type="password" name="password" value="{{$student->password}}"  class="form-control" id="exampleInputPassword1" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Image</label>
+                        <input type="file" name="img" class="form-control" value="{{$student->img}}"  id="exampleInputPassword1"  />
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Current Image</label>
+                        <img src="{{asset('storage/'.$student->img)}}" class="card-img-top img-size-64" alt="profile_image">
                     </div>
                 </div>
             </div>

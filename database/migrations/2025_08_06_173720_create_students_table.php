@@ -19,6 +19,7 @@ return new class extends Migration
         $table->date('bod');
         $table->integer('age');
         $table->integer('password');
+        $table->string('img');
         $table->timestamps();
     });
     }

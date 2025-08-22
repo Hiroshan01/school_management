@@ -225,6 +225,20 @@
 
     @@stack('script')
 </script>
+
+<script>
+    $(document).ready(function() {
+        $('#students-table').DataTable({
+            // Optional configurations
+            paging: true,      // Enable pagination
+            searching: true,   // Enable search box
+            ordering: true,    // Enable column sorting
+            info: true,        // Show "Showing 1 to 10 of X entries"
+            lengthChange: true // Allow users to change page length
+        });
+    });
+</script>
+
 <!--end::Script-->
 </body>
 <!--end::Body-->

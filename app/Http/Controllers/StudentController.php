@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class StudentController extends Controller
 {
@@ -22,6 +24,8 @@ class StudentController extends Controller
 
     public function store(Request $request){
         try {
+            $imagePath = ImageUpload::uploadImage($request->file('img'),'student/profile');
+            echo ('imge---'.$imagePath);
           Student::query()->create([
               'reg_no'=>$request->reg_no,
               'name'=>$request->name,
@@ -29,7 +33,8 @@ class StudentController extends Controller
               'address'=>$request->address,
               'bod'=>$request->bod,
               'age'=>$request->age,
-              'password'=>$request->password,
+              'password'=>Hash::make($request->password),
+              'img'=>$imagePath,
           ]);
 
           //return redirect()->back(); this page
@@ -49,7 +54,9 @@ class StudentController extends Controller
      return view('student.student_update',compact('student'));
     }
     public function update(Request $request){
+
         try {
+            $imagePath = ImageUpload::uploadImage($request->file('img'),'student/profile');
             Student::query()
                 ->where('id',$request->id)
                 ->update([
@@ -60,6 +67,8 @@ class StudentController extends Controller
                 'bod'=>$request->bod,
                 'age'=>$request->age,
                 'password'=>$request->password,
+                    'img'=>$imagePath,
+
             ]);
 
             //return redirect()->back(); this page
@@ -80,5 +89,16 @@ class StudentController extends Controller
         }catch(\Exception $e) {
             return $e;
         }
+    }
+    //student image view card
+    public function image_student()
+    {
+       try{
+         $students =  Student::all();
+         return view('student.stu_img',compact('students'));
+       }
+       catch (\Exception $e){
+           return $e;
+       }
     }
 }
